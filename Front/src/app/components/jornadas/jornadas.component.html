@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<div class="text-center">
+    <button type="button" class="btn btn-success m-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Nueva Jornada</button>
+</div>
+
+
+<div class="row">
+  <div *ngFor = "let jornada of jornadas" class="card m-4" style="width: 18rem;">
+      <img src="../../assets/img/ligas.jpg" class="card-img-top" alt="">
+      <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">Jornada: {{jornada.jornada}}</h5>
+          
+      </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva Jornada</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          
+
+          <form>
+              <div class="mb-4">
+                <label for="exampleInputEmail1" class="form-label">Número de Jornada</label>
+                <input [(ngModel)]="jornada " name="jornada" type="number" class="form-control" id="jornada" aria-describedby="emailHelp">
+              </div>
+            
+              <div class="mb-3">
+                  <label class="form-label">Equipo Local</label>
+                  <select [(ngModel)]=" equipolocal " name="equipolocal" class="form-select" aria-label="Default select example">
+                      <option  *ngFor="let equipo of equipos" value="{{ equipo._id}}" selected>{{ equipo.name }}</option>
+                    </select>
+              </div>
+
+              <div class="mb-4">
+                  <label for="exampleInputEmail1" class="form-label">Goles Equipo Local</label>
+                  <input [(ngModel)]="equipolocalGoles " name="equipolocalGoles" type="number" class="form-control" id="equipolocalGoles">
+                </div>
+
+
+              <div class="mb-3">
+                  <label class="form-label">Equipo Visitante</label>
+                  <select [(ngModel)]="equipovisitante " name="equipovisit" class="form-select" aria-label="Default select example">
+                      <option *ngFor="let equipo of equipos" value="{{equipo._id}}" selected>{{ equipo.name }}</option>
+                    </select>
+              </div>
+
+              <div class="mb-4">
+                  <label for="exampleInputEmail1" class="form-label">Goles Equipo Visitante</label>
+                  <input [(ngModel)]=" equipovisitanteGoles" name="equipovisitanteGoles"  type="number" class="form-control" id="equipovisitanteGoles">
+                </div>
+              
+            </form>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="saveJornada()" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

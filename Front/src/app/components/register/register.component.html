@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+<section class="vh-100 bg-image"
+  style="background: #e3f2fd;">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Crea tu cuenta</h2>
+              <form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
+
+                <div class="form-outline mb-4">
+                  <span *ngIf="!name.valid && name.touched" class="requiredField">
+                    *campo requerido
+                  </span>
+                  <input type="text" [(ngModel)]="user.name" #name="ngModel" name="name" id="name" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="name">Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <span *ngIf="!username.valid && username.touched" class="requiredField">
+                    *campo requerido
+                  </span>
+                  <input type="text" [(ngModel)]="user.username" #username="ngModel" name="username" id="username" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="username">UserName</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <span *ngIf="!email.valid && email.touched" class="requiredField">
+                    *campo requerido
+                  </span>
+                  <input type="email" [(ngModel)]="user.email" #email="ngModel" name="email" id="email" class="form-control form-control-lg" required=""/>
+                  <label class="form-label" for="email">Email</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <span *ngIf="!password.valid && password.touched" class="requiredField">
+                    *campo requerido
+                  </span>
+                  <input type="password" [(ngModel)]="user.password" #password="ngModel" name="password" id="password" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="password">Password</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <span *ngIf="!confirm.valid && confirm.touched" class="requiredField">
+                    *campo requerido
+                  </span>
+                  <input type="password" (keyup)="checkpassword()" #confirm="ngModel" [(ngModel)]="confirmPass" name="confirmPass" id="rpassword" class="form-control form-control-lg" required/>
+                  <label class="form-label" for="rpassword">Repeat your password</label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit" [disabled]="!registerForm.form.valid"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">¿Ya tiene cuenta? <a routerLink="/login"
+                    class="fw-bold text-body"><u>Login aqui</u></a></p>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
